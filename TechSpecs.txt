@@ -1,21 +1,20 @@
 Tech Specs
 1.	Game Feature
-a.	map 
+a.	map
 i.	Difficulties
 Redrawing the map whenever map increases in size and adjusting the detection boxes for each new tile
 ii.	Pseudo Code
 increaseMapSize() – increase the rows and columns and redraw the map for a price (lowers the funds)
-placeTile() – place down the tile on an empty tile / swap the tiles if not an empty one (cannot move tiles with tag of unmoveable)
 iii.	Performance impact
 Heavy memory usage for each of the tiles as each will hold multitude of data.
 b.	players
 i.	Difficulties
-Differentiating what the players should do when the space bar is pressed since it is in charge of all functions that are not movement (watering, fertilizing, 
+Differentiating what the players should do when the space bar is pressed since it is in charge of all functions that are not movement (watering, fertilizing,
 ii.	Pseudo Code
 facingDirection()
-InitializePlayer1() – initialize the player 
+InitializePlayer1() – initialize the player
 InitializePlayer2() – initialize the player
-moveUp1 
+moveUp1
 movelLeft1
 moveRight1
 moveDown1
@@ -24,19 +23,20 @@ moveLeft2
 moveRight2
 moveDown2
 	all move the designated player in the designated direction not moving outside the bounds and changes what way they are facing. If at a wall/ tile that is not empty, the player now faces that direction.
-interact() when space bar  is pressed, both players interact with the tile they are on, calling the mapTiles use() function
+interact() when space bar  is pressed, both players interact with the tile they are facing, calling the mapTiles use() function
 displayFunds() display dollars
-placeTile
+placeTile() places the tile at the top of the inventory and exchanges it with the current tile, placing it at the end of the arrayList cannot move if unmoveable
+increaseScore(amount) increases score by amount
 iii.	Performance impact
 Very small time impact, players preform simple actions with simple checks
 c.	mapTiles
 i.	Difficulties
-Swapping out / deleting the tiles when bought 
+Swapping out / deleting the tiles when bought
 designating which tiles are unmoveable to enact their primary actions
 drawing the tiles in different directions
 ii.	Pseudo Code
 initializeTile(tile,x,y,d) – draw the tile at the specified coordinates, and direction, empty tiles are drawn whenever there is a null character in the arrayList.
-use() checks if either player is at a tile that can be used and facing it and produces the item / makes the player take an action
+use() checks if either player is at a tile that can be used and facing it and produces the item held or place the placeableObject held onto the tiles or object on the tile
 iii.	Performance impact
 Heavy time impact because of all the checks for the use() (could be split up into smaller bits with different cases for checking for each kind of block and then running a specific bit)
 d.	atm
@@ -45,7 +45,7 @@ Swapping to a secondary screen to display upgrades and add them to inventory
 Creating an inventory?
 ii.	Pseudo Code
 drawATM() replaces the current screen with that of the atm displaying available upgrade and/or inventory
-	sub bit of code that generates items from an arrayList / 
+	sub bit of code that generates items from an arrayList /
 buyNewTile() – add a new tile from the shop into inventory for a price
 iii.	Performance impact
 Heavy time impact as a result of the drawing in and out of the screen
@@ -61,7 +61,8 @@ f.	Plants
 i.	Difficulties
 Drawing the plants at different growth stages
 ii.	Pseudo code
-Grow(multiplier) increase the growth of the plant depending on what is added to it
+Grow(factor) place the player’s heldItem onto the tile if there is a potted plant present
+initalizePlant() draw the plant on the tile it is placed at and begin incrementing its timeAlive
 iii.	Performance impact
 Small time constraint with the multiplier for growth
 g.	Customers
@@ -69,26 +70,27 @@ i.	Difficulties
 Generating new customers with varying time constraints, demands, and rewards
 Spacing them out to a playable time/ changing speed with new levels
 ii.	Pseudo code
-newCustomer() draw the customer/order displaying the demand for an item as a decreasing bar, reducing the original reward for the plant
-sellItem (item) remove the customer and provide reward * the demand percentage / punish the player if the item is incorrect
+newCustomer() draw the customer/order displaying the demand for an item as a decreasing bar, reducing the original reward for the plant, display a png of the plant/ name and the original reward
+sellItem (item) remove the customer’s heldItem and provide reward * the demand percentage / punish the player if the item is incorrect
 iii.	Performance impact
 Time impact depending on how many plants can be demanded/how many customers can be on screen at one time
 2.	The code should be programmable with everything that we have used in atom so far as each of the drawn items should be sprites that will need to be transformed depending on the scope. The tiles will all be saved as a 2d arrayList of tiles with the placeable objects stored as a variable within the tile if they can alongside other varying variables. Each placeable object will have similar variables. Because purchases can only be made between levels there will be no need to store the exact positions of the map prior to shifting to the shop screen to return to. The customers should be generated from a list of possible demanded plants which have tied rewards and limits which are tied to the plant but can be varied by a couple of points. The movement of the players will be changes in direction of sprite and movements in the x and y direction. The interaction should be the result of looking at the next object in either of the four directions of the current object depending on which way the player is facing.
-3.	
+3.
 a.	Tiles / map – have areas of the map which can be interacted with and draw them. Ensure that there is a playable area / that the game can work.
 b.	Players – be able to draw a player that can move in four directions and face each one. Without a player there is an empty map that cannot be interacted with.
 c.	Placeable objects / plants – objects that can be put onto tiles for more interaction. Once tables for growing and other tiles can be used by the player, the player should be able to grow plants and place pots and other object onto those tiles to increase their functionality
 d.	Customers – create a reason to grow plants. Once the player can perform the basic actions of the game, a challenge/reward system should be created to incentivize the player.
 e.	Atm – a shop that can change the layout of the map / expand it. The game’s difficulty can be scaled by increasing the customers, but needs to be balanced out by making the game easier
-4.	
+4.
 a.	The most difficult part of programming will be determining when an object can be interacted with since in multiplayer it will happen in two different places at the same time and the interactions need to be coded differently for both players as they will depend entirely on the variables of the player. (held item, position, direction, etc.)
-b.	The tiles and map should take roughly 2 weeks to complete as the interaction areas will be finicky as they should be variable depending on map size since the canvas itself will never expand. 
+b.	The tiles and map should take roughly 2 weeks to complete as the interaction areas will be finicky as they should be variable depending on map size since the canvas itself will never expand.
 The players should take about a week to complete as their movements and directions should take a day while they interactions with tiles should take up the rest of the time.
 The placeable objects (pots and plants) should take 2 days. The pots will be a very quick process since it will only contain the data of where it is located and whether there is a plant there or not. The plants should take 2 days to program the necessities for each of the different plants to determine when to change the growth stages.
 Customers will take 1 week as they will be generated from lists of possible parts of an order. The reward system will take most of that.
 The atm will take 2 weeks at the least as the redrawing of the map size will affect the tiles, sprites, and movements, effecting the scaling of all the previous parts. The shop’s limitations/ availability will also take time to balance alongside the customer difficulty.
 c.	There is a technical issue with the increasing complexity of the plants / maintenance of them as additional timers and/or requirements to the plants will need to either be hard coded into the game as newer plants that will replace the old plants or be changeable depending on choices the player has made. The redrawing of the map with the atm’s increasing map size will also provide issues.
 5.	Global:
+beatLevel(Boolean) if playerScore>level*multiplier true and increase level by 1, reduce score to 0
 playerMoneyTotal(integer) cumulative score throughout different levels
 customerList (arrayList) of customer objects
 level – the current level of the player (integer) used to create a minimum score by multiplying by multiplier
@@ -120,7 +122,7 @@ sprite (String) the png of the sprite
 	type (string) differentiate the pot from the plant from the mulch
 	pots:
 		heldPlant(plant) the plant within the pot
-	plant: 
+	plant:
 		species (String) the species of plant
 		requirements (arrayList of placeableObjects) the necessities for the plant to complete growth
 		maxRequirements(integer) size of requirements at the beginning>
@@ -133,4 +135,5 @@ cusX (integer)x position of customer
 cusY (integer)y position of customer
 rewardMultiplier (double) multiplies reward by time it takes to produce plant – also acts as the countdown timer (when this reaches 0, the customer gets angry and leaves dealing out a punishment)
 reward(double) reward for providing the plant
-
+6.
+link https://docs.google.com/drawings/d/1lHIHjb3BoHRwohKYh0damZ8B60I8_F0Ntlcy5Mkbp3A/edit?usp=sharing
