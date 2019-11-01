@@ -186,7 +186,7 @@ Game.init = function () {
     this.tileAtlas = Loader.getImage('tiles');
 
     this.hero = new Hero(map, 100, 100);
-    this.camera = new Camera(map, 500, 500);
+    this.camera = new Camera(map, 512, 512);
     this.camera.follow(this.hero);
 };
 
