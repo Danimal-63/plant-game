@@ -1,5 +1,5 @@
 
-	Advanced Topics :  Game Design (3-days)	
+	Advanced Topics :  Game Design (3-days)
 Overview
 You are to design a game in JavaScript using Canvas.  The game you are about to design has to meet all of the following requirements:
 Requirements
@@ -9,7 +9,7 @@ Requirements
 
 2. The game must have levels, controls, and NOT be a copy of an easily Googleable game (by Mr. Theiss and Mr. Stout)
 
-	The movement is based on a coordinate system, every object, table, plant, character has a designated spot on a grid (around 16x16). This is being controlled by WASD controls, or IJKL for the second player. The gimmick with two controllers is that the action button (SPACE, which controls picking up stuff, watering stuff, collecting stuff) is the same for both players. So, if player 1 wants to put down a pot and player 2 is watering something, when either one presses SPACE, the other player does the same action. 
+	The movement is based on a coordinate system, every object, table, plant, character has a designated spot on a grid (around 16x16). This is being controlled by WASD controls, or IJKL for the second player. The gimmick with two controllers is that the action button (SPACE, which controls picking up stuff, watering stuff, collecting stuff) is the same for both players. So, if player 1 wants to put down a pot and player 2 is watering something, when either one presses SPACE, the other player does the same action.
 
 	The rounds get procedurally harder because the plants will get to more complex levels, meaning that they require more maintenance, and the time limits for customers will get faster.
 
@@ -20,7 +20,7 @@ Requirements
 4. The game must be designed to support both single and multiplayer modes on the same laptop
 	Seen above for controls.
 5. The game must have objects, characters, and/or sprites
- 
+
 
 	Watering can: Pick up with Space, walk over in front of a pot with a plant in it, and press Space to use the can. Press Space over the table to place it down.
 
@@ -34,43 +34,41 @@ Requirements
 	Customers: Ask for an order (right now one flower), turns red if meter gets to red portion. Hurry up!
 	ATM/Computer: Interact to buy an upgrade.
 6. Must have an overlay or some way of viewing game states during play (having score on screen does not count)
-	You can see the cost that you need to get to complete the level, and how far you are to get to the next upgrade. 
+	You can see the cost that you need to get to complete the level, and how far you are to get to the next upgrade.
 7. The game must have one experimental feature
 	After every round, you can rebuild your shop with your tiles that you have
 
 
 
-	Grading Rubric	
+	Grading Rubric
 
-Component 
-(max score) 	Full credit responses include: 	Comments 
+Component
+(max score) 	Full credit responses include: 	Comments
 Planning  (6 points maximum)
 Game Designed for HTML Canvas
-(2 points): 
+(2 points):
 
 	•	●	The entire game design is built to be played in a browser
 •	●	The planning description/ image has been broken into logical components that represent thoughtful  design.  	.
 Levels and controls
 (4 points) 	•	●	Clearly define changes between game levels
 •	●	Describe in detail each control Player 1 and Player 2 can use
-•	●	Layout all controls in a comprehensive diagram	
-Program Code 12 points maximum 
-Multiple Objectives 
+•	●	Layout all controls in a comprehensive diagram
+Program Code 12 points maximum
+Multiple Objectives
 (2 points)	•	●	Program contains at least one main objective
 •	●	Program contains at least one secondary objective
-•	●	All objectives are clearly defined in their context of the game	
+•	●	All objectives are clearly defined in their context of the game
 Multiplayer Support
 (3 points) 	•	●	Game design allows for an entirely single player game
-•	●	Game design supports a minimum of two people on a single computer (no extra mouse or keyboard)	
+•	●	Game design supports a minimum of two people on a single computer (no extra mouse or keyboard)
 Characters, Objects and/or Sprites
-(2 points) 	•	●	Design includes meaningful, substantive  interactive objects, players, and sprites.  
-•	●	Design describes how all objects should relate to each other 	
+(2 points) 	•	●	Design includes meaningful, substantive  interactive objects, players, and sprites.
+•	●	Design describes how all objects should relate to each other
 Overlay or status feedback
 (2 points) 	•	●	Design describes what game information is communicated to the user
-•	●	Design explains how mentioned game information is communicated	
-Experimental Feature 
-(2 points) 	•	●	Includes at least one meaningful additional feature	
+•	●	Design explains how mentioned game information is communicated
+Experimental Feature
+(2 points) 	•	●	Includes at least one meaningful additional feature
 Did you half-ass it?
-(9 points) 	•	●	Overall the design is something which can be pulled out of one’s butt in 10-20 minutes instead of showing the work of 3-4 class periods	
-
-
+(9 points) 	•	●	Overall the design is something which can be pulled out of one’s butt in 10-20 minutes instead of showing the work of 3-4 class periods
