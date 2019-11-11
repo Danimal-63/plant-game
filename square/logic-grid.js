@@ -27,7 +27,7 @@ var map = {
       0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
       0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
       0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-      0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
+      0, 0, 5, 5, 0, 0, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
@@ -42,6 +42,29 @@ var map = {
     getTile: function (layer, col, row) {
         return this.layers[layer][row * map.cols + col];
     },
+    // isPickUpTileAtXY: function (x, y{
+    //     var col = Math.floor(x / y this.tsize);
+    //     var row = Math.floor(x /y this.tsize);
+    //
+    //     return this.layers.reduce(function (res, layer, index)) {
+    //       var tile = this.getTile (index, col, row);
+    //       var.isInteract = tile == 6;
+    //       return res || isInteract;
+    //     }.bind (this). false);
+    //   },
+    //   getCol: function (x) {
+    //       return Math.floor(x / this.tsize);
+    //   },
+    //   getRow: function (y) {
+    //       return Math.floor(y / this.tsize);
+    //   },
+    //   getX: function (col) {
+    //       return col * this.tsize;
+    //   },
+    //   getY: function (row) {
+    //       return row * this.tsize;
+    //   },
+
     isSolidTileAtXY: function (x, y) {
         var col = Math.floor(x / this.tsize);
         var row = Math.floor(y / this.tsize);
@@ -123,6 +146,8 @@ function Hero(map, x, y) {
 
 Hero.SPEED = 256; // pixels per second
 
+//Hero.objectHolding = null;
+
 Hero.prototype.move = function (delta, dirx, diry) {
     // move hero
     this.x += dirx * Hero.SPEED * delta;
@@ -131,12 +156,33 @@ Hero.prototype.move = function (delta, dirx, diry) {
     // check if we walked into a non-walkable tile
     this._collide(dirx, diry);
 
+    //this._pickup(dirx, diry);
+
     // clamp values
     var maxX = this.map.cols * this.map.tsize;
     var maxY = this.map.rows * this.map.tsize;
     this.x = Math.max(0, Math.min(this.x, maxX));
     this.y = Math.max(0, Math.min(this.y, maxY));
 };
+
+// Hero.prototype._pickup = function (dirx, diry){
+//   var row, col;
+//   var right = this.x + this.width / 2 - 1;
+//   var top = this.y - this.height / 2;
+//   var bottom = this.y + this.height / 2 - 1;
+//
+//   var pickup =
+//     this.map.isPickUpTileAtXY (left, top) ||
+//     this.map.isPickUpTileAtXY (right, top) ||
+//     this.map.isPickUpTileAtXY (right, bottom) ||
+//     this.map.isPickUpTileAtXY (left, bottom);
+//     if (!pickup) {return;}
+//
+// }
+
+
+
+
 
 Hero.prototype._collide = function (dirx, diry) {
     var row, col;
@@ -180,9 +226,15 @@ Game.load = function () {
     ];
 };
 
+function pickUp (){
+
+}
+
+
+
 Game.init = function () {
     Keyboard.listenForEvents(
-        [Keyboard.LEFT, Keyboard.RIGHT, Keyboard.UP, Keyboard.DOWN]);
+        [Keyboard.LEFT, Keyboard.RIGHT, Keyboard.UP, Keyboard.DOWN, Keyboard.SPACE]);
     this.tileAtlas = Loader.getImage('tiles');
 
     this.hero = new Hero(map, 100, 100);
@@ -199,9 +251,19 @@ Game.update = function (delta) {
     else if (Keyboard.isDown(Keyboard.UP)) { diry = -1; }
     else if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1; }
 
+
+    if (Keyboard.isDown(Keyboard.SPACE)) {
+        pickUp ();
+
+    }
+
     this.hero.move(delta, dirx, diry);
     this.camera.update();
 };
+
+// function isNextToPot(){
+//     if ()
+// }
 
 Game._drawLayer = function (layer) {
     var startCol = Math.floor(this.camera.x / map.tsize);
