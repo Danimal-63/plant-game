@@ -119,8 +119,8 @@ Camera.prototype.update = function () {
       this.map = map;
       this.x = x;
       this.y = y;
-      this.width = map.tsize;
-      this.height = map.tsize;
+      this.width = 48;
+      this.height = 48;
 
       this.image = Loader.getImage('hero');
     }
