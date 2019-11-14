@@ -119,8 +119,8 @@ Camera.prototype.update = function () {
       this.map = map;
       this.x = x;
       this.y = y;
-      this.width = 48;
-      this.height = 48;
+      this.width = 32;
+      this.height = 32;
 
       this.image = Loader.getImage('hero');
     }
@@ -305,5 +305,5 @@ Camera.prototype.update = function () {
             // draw map top layer
             this._drawLayer(1);
 
-            this._drawGrid();
+            //this._drawGrid();
           };
