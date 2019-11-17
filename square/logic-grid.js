@@ -121,7 +121,7 @@ Camera.prototype.update = function () {
       this.y = y;
       this.width = 48;
       this.height = 48;
-
+      this.direction=0;
       this.image = Loader.getImage('hero');
     }
 
@@ -147,14 +147,48 @@ Camera.prototype.update = function () {
       this.x = Math.max(0, Math.min(this.x, maxX));
       this.y = Math.max(0, Math.min(this.y, maxY));
     };
+Hero.prototype.drop = function (){
+  if (Hero.objectHolding==null){return;}
+  if (Keyboard.isDown(Keyboard.LEFT)){
+    heroMapCol = Math.floor(this.x/ map.tsize) - 1;
+    heroMapRow = Math.floor(this.y/ map.tsize);
+    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+      map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
+    }
+  }
+  else if (Keyboard.isDown(Keyboard.RIGHT)){
+    heroMapCol = Math.floor(this.x/ map.tsize) + 1;
+    heroMapRow = Math.floor(this.y/ map.tsize);
+    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+      Hero.objectHolding = null;
+      map.setTile (1, heroMapCol, heroMapRow,  Hero.objectHolding);
+    }
+  }
+  else if (Keyboard.isDown(Keyboard.UP)){
+    heroMapCol = Math.floor(this.x/ map.tsize);
+    heroMapRow = Math.floor(this.y/ map.tsize) - 1;
+    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+      Hero.objectHolding = null;
+      map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
+    }
+  }
+  else if (Keyboard.isDown(Keyboard.DOWN)){
+    heroMapCol = Math.floor(this.x/ map.tsize);
+    heroMapRow = Math.floor(this.y/ map.tsize) + 1;
+    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+      Hero.objectHolding = null;
+      map.setTile (1, heroMapCol, heroMapRow,  Hero.objectHolding);
+    }
+  }
 
+}
     Hero.prototype.pickUp = function (){
       if (Hero.objectHolding != null) {return;}
       if (Keyboard.isDown(Keyboard.LEFT)){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 1;
+          Hero.objectHolding = 5;
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
@@ -162,7 +196,7 @@ Camera.prototype.update = function () {
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 1;
+          Hero.objectHolding = 5;
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
@@ -170,7 +204,7 @@ Camera.prototype.update = function () {
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) - 1;
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 1;
+          Hero.objectHolding = 5;
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
@@ -178,7 +212,7 @@ Camera.prototype.update = function () {
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) + 1;
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 1;
+          Hero.objectHolding = 5;
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
@@ -224,7 +258,7 @@ Camera.prototype.update = function () {
       Game.load = function () {
         return [
           Loader.loadImage('tiles', '../assets/tiles.png'),
-          Loader.loadImage('hero', '../assets/character.png')
+          Loader.loadImage('hero', '../assets/HeroSheet.png')
         ];
       };
 
@@ -242,10 +276,14 @@ Camera.prototype.update = function () {
           // handle hero movement with arrow keys
           var dirx = 0;
           var diry = 0;
-          if (Keyboard.isDown(Keyboard.LEFT)) { dirx = -1; }
-          else if (Keyboard.isDown(Keyboard.RIGHT)) { dirx = 1; }
-          else if (Keyboard.isDown(Keyboard.UP)) { diry = -1; }
-          else if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1; }
+          if (Keyboard.isDown(Keyboard.LEFT)) { dirx = -1;
+          this.hero.direction=3; }
+          else if (Keyboard.isDown(Keyboard.RIGHT)) { dirx = 1;
+          this.hero.direction=2;}
+          else if (Keyboard.isDown(Keyboard.UP)) { diry = -1;
+          this.hero.direction=1;}
+          else if (Keyboard.isDown(Keyboard.DOWN)) { diry = 1;
+          this.hero.direction=0; }
 
 
           if (Keyboard.isDown(Keyboard.SPACE)) {
@@ -299,6 +337,10 @@ Camera.prototype.update = function () {
           // draw main character
           this.ctx.drawImage(
             this.hero.image,
+            (this.hero.direction)*map.tsize,
+            0,
+            64,
+            64,
             this.hero.screenX - this.hero.width / 2,
             this.hero.screenY - this.hero.height / 2,
           this.hero.width,this.hero.height);
