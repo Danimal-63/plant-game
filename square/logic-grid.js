@@ -121,7 +121,7 @@ Camera.prototype.update = function () {
       this.y = y;
       this.width = 48;
       this.height = 48;
-      this.direction=0;
+      this.direction=0;//down is 0, up is 1, right is 2, left is 3
       this.image = Loader.getImage('hero');
     }
 
@@ -153,6 +153,7 @@ Hero.prototype.drop = function (){
     heroMapCol = Math.floor(this.x/ map.tsize) - 1;
     heroMapRow = Math.floor(this.y/ map.tsize);
     if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+      Hero.objectHolding = null;
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
     }
   }
@@ -184,7 +185,7 @@ Hero.prototype.drop = function (){
 }
     Hero.prototype.pickUp = function (){
       if (Hero.objectHolding != null) {return;}
-      if (Keyboard.isDown(Keyboard.LEFT)){
+      if (Game.hero.direction==3){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
@@ -192,7 +193,7 @@ Hero.prototype.drop = function (){
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
-      else if (Keyboard.isDown(Keyboard.RIGHT)){
+      else if (Game.hero.direction==2){
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
@@ -200,7 +201,7 @@ Hero.prototype.drop = function (){
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
-      else if (Keyboard.isDown(Keyboard.UP)){
+      else if (Game.hero.direction==1){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) - 1;
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
@@ -208,7 +209,7 @@ Hero.prototype.drop = function (){
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
-      else if (Keyboard.isDown(Keyboard.DOWN)){
+      else if (Game.hero.direction==0){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) + 1;
         if (map.getTile (1, heroMapCol, heroMapRow) == 5){
