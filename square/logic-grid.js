@@ -149,37 +149,37 @@ Camera.prototype.update = function () {
     };
 Hero.prototype.drop = function (){
   if (Hero.objectHolding==null){return;}
-  if (Keyboard.isDown(Keyboard.LEFT)){
+  if (Game.hero.direction==3){
     heroMapCol = Math.floor(this.x/ map.tsize) - 1;
     heroMapRow = Math.floor(this.y/ map.tsize);
-    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
-      Hero.objectHolding = null;
+    if (map.getTile (0, heroMapCol, heroMapRow) == 2 && map.getTile(1,heroMapCol,heroMapRow)==0){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
+      Hero.objectHolding = null;
     }
   }
-  else if (Keyboard.isDown(Keyboard.RIGHT)){
+  else if (Game.hero.direction==2){
     heroMapCol = Math.floor(this.x/ map.tsize) + 1;
     heroMapRow = Math.floor(this.y/ map.tsize);
-    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+    if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+      map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
-      map.setTile (1, heroMapCol, heroMapRow,  Hero.objectHolding);
-    }
+        }
   }
-  else if (Keyboard.isDown(Keyboard.UP)){
+  else if (Game.hero.direction==1){
     heroMapCol = Math.floor(this.x/ map.tsize);
     heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
-      Hero.objectHolding = null;
+    if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
-    }
+      Hero.objectHolding = null;
+     }
   }
-  else if (Keyboard.isDown(Keyboard.DOWN)){
+  else if (Game.hero.direction==0){
     heroMapCol = Math.floor(this.x/ map.tsize);
     heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-    if (map.getTile (1, heroMapCol, heroMapRow) == 2){
+    if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+      map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
-      map.setTile (1, heroMapCol, heroMapRow,  Hero.objectHolding);
-    }
+        }
   }
 
 }
@@ -288,7 +288,13 @@ Hero.prototype.drop = function (){
 
 
           if (Keyboard.isDown(Keyboard.SPACE)) {
+            if(Hero.objectHolding==null){
             this.hero.pickUp ();
+            Keyboard._keys[32] = false;
+          }else{
+            this.hero.drop();
+            Keyboard._keys[32] = false;
+          }
 
           }
 
