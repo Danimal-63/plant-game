@@ -23,18 +23,18 @@ var map = {
   ], [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 0, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 6, 6, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 6, 6, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 7, 6, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 7, 7, 0, 0,
+    0, 0, 5, 5, 0, 0, 5, 0, 0, 5, 5, 0, 7, 7, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
-    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 5, 5, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 8, 8, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 8, 8, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 8, 8, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 8, 8, 0, 0,
+    0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 5, 0, 8, 8, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 
@@ -54,7 +54,7 @@ var map = {
     // loop through all layers and return TRUE if any tile is solid
     return this.layers.reduce(function (res, layer, index) {
       var tile = this.getTile(index, col, row);
-      var isSolid = tile === 3 || tile === 5;
+      var isSolid = tile === 3 || tile === 5|| tile === 2|| tile === 4|| tile === 6|| tile === 7;
       return res || isSolid;
     }.bind(this), false);
   },
@@ -196,32 +196,32 @@ Hero.prototype.drop = function (){
       if (Game.hero.direction==3){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 5;
+        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+          Hero.objectHolding =map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
       else if (Game.hero.direction==2){
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 5;
+        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+          Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
       else if (Game.hero.direction==1){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-        if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 5;
+        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+          Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
       else if (Game.hero.direction==0){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-        if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-          Hero.objectHolding = 5;
+        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+          Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
         }
       }
@@ -389,32 +389,32 @@ Hero.prototype.drop = function (){
           if (Game.hero2.direction==3){
             heroMapCol = Math.floor(this.x/ map.tsize) - 1;
             heroMapRow = Math.floor(this.y/ map.tsize);
-            if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-              Hero2.objectHolding = 5;
+            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+              Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
               map.setTile (1, heroMapCol, heroMapRow, 0);
             }
           }
           else if (Game.hero2.direction==2){
             heroMapCol = Math.floor(this.x/ map.tsize) + 1;
             heroMapRow = Math.floor(this.y/ map.tsize);
-            if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-              Hero2.objectHolding = 5;
+            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+              Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
               map.setTile (1, heroMapCol, heroMapRow, 0);
             }
           }
           else if (Game.hero2.direction==1){
             heroMapCol = Math.floor(this.x/ map.tsize);
             heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-            if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-              Hero2.objectHolding = 5;
+            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+              Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
               map.setTile (1, heroMapCol, heroMapRow, 0);
             }
           }
           else if (Game.hero2.direction==0){
             heroMapCol = Math.floor(this.x/ map.tsize);
             heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-            if (map.getTile (1, heroMapCol, heroMapRow) == 5){
-              Hero2.objectHolding = 5;
+            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+              Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
               map.setTile (1, heroMapCol, heroMapRow, 0);
             }
           }
