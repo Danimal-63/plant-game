@@ -162,64 +162,168 @@ Camera.prototype.update = function () {
       if (Game.hero.direction==3){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile (0, heroMapCol, heroMapRow) == 2 && map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+        if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
           Hero.objectHolding = null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+        if (tileGot==5&&Hero.objectHolding==8){
           map.setTile(1,heroMapCol,heroMapRow,4);
           Hero.objectHolding=null
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
+        if (tileGot==5&&Hero.objectHolding==10){
+          map.setTile(1,heroMapCol,heroMapRow,11);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==14){
+          map.setTile(1,heroMapCol,heroMapRow,15);
+          Hero.objectHolding=null
+        }
+        if (tileGot==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
           map.setTile(1,heroMapCol,heroMapRow,3);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==11&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,12);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==12&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,13);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==16&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,17);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==15&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,16);
           Hero.objectHolding=null;
         }
       }
       else if (Game.hero.direction==2){
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+        if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
           Hero.objectHolding = null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+        if (tileGot==5&&Hero.objectHolding==8){
           map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==10){
+          map.setTile(1,heroMapCol,heroMapRow,11);
+          Hero.objectHolding=null
+        }
+        if (tileGot==10&&Hero.objectHolding==14){
+          map.setTile(1,heroMapCol,heroMapRow,15);
+          Hero.objectHolding=null
+        }
+        if (tileGot==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
+          map.setTile(1,heroMapCol,heroMapRow,3);
           Hero.objectHolding=null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
-          map.setTile(1,heroMapCol,heroMapRow,3);
+        if (tileGot==11&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,12);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==12&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,13);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==16&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,17);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==15&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,16);
           Hero.objectHolding=null;
         }
       }
       else if (Game.hero.direction==1){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-        if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+        if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
           Hero.objectHolding = null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+        if (tileGot==5&&Hero.objectHolding==8){
           map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==10){
+          map.setTile(1,heroMapCol,heroMapRow,11);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==14){
+          map.setTile(1,heroMapCol,heroMapRow,15);
+          Hero.objectHolding=null
+        }
+        if (tileGot==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
+          map.setTile(1,heroMapCol,heroMapRow,3);
           Hero.objectHolding=null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
-          map.setTile(1,heroMapCol,heroMapRow,3);
+        if (tileGot==11&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,12);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==12&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,13);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==16&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,17);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==15&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,16);
           Hero.objectHolding=null;
         }
       }
       else if (Game.hero.direction==0){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-        if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+        if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
           Hero.objectHolding = null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+        if (tileGot==5&&Hero.objectHolding==8){
           map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==10){
+          map.setTile(1,heroMapCol,heroMapRow,14);
+          Hero.objectHolding=null
+        }
+        if (tileGot==5&&Hero.objectHolding==8){
+          map.setTile(1,heroMapCol,heroMapRow,15);
+          Hero.objectHolding=null
+        }
+        if (tileGot==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
+          map.setTile(1,heroMapCol,heroMapRow,3);
           Hero.objectHolding=null;
         }
-        if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero.objectHolding==6||Hero.objectHolding==7)){
-          map.setTile(1,heroMapCol,heroMapRow,3);
+        if (tileGot==11&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,12);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==12&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,13);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==16&&Hero.objectHolding==6){
+          map.setTile(1,heroMapCol,heroMapRow,17);
+          Hero.objectHolding=null;
+        }
+        if (tileGot==15&&Hero.objectHolding==7){
+          map.setTile(1,heroMapCol,heroMapRow,16);
           Hero.objectHolding=null;
         }
       }
@@ -230,7 +334,8 @@ Camera.prototype.update = function () {
       else if (Game.hero.direction==3){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+          var tileGot = map.getTile(1,heroMapCol,heroMapRow);
+        if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
           map.setTile(0,heroMapCol,heroMapRow,1);
           this.score+=100;
           return;
@@ -244,7 +349,9 @@ Camera.prototype.update = function () {
       else if (Game.hero.direction==2){
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
-        if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot = map.getTile(1,heroMapCol,heroMapRow);
+
+        if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
           map.setTile(0,heroMapCol,heroMapRow,1);
           this.score+=100;
           return;
@@ -258,7 +365,9 @@ Camera.prototype.update = function () {
       else if (Game.hero.direction==1){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-        if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot = map.getTile(1,heroMapCol,heroMapRow);
+
+        if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
           map.setTile(0,heroMapCol,heroMapRow,1);
           this.score+=100;
           return;
@@ -272,7 +381,9 @@ Camera.prototype.update = function () {
       else if (Game.hero.direction==0){
         heroMapCol = Math.floor(this.x/ map.tsize);
         heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-        if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+        var tileGot = map.getTile(1,heroMapCol,heroMapRow);
+
+        if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
           map.setTile(0,heroMapCol,heroMapRow,1);
           this.score+=100;
           return;
@@ -411,64 +522,168 @@ Camera.prototype.update = function () {
                           if (Game.hero2.direction==3){
                             heroMapCol = Math.floor(this.x/ map.tsize) - 1;
                             heroMapRow = Math.floor(this.y/ map.tsize);
-                            if (map.getTile (0, heroMapCol, heroMapRow) == 2 && map.getTile(1,heroMapCol,heroMapRow)==0){
+                            var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+                            if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
                               map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
                               Hero2.objectHolding = null;
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+                            if (tileGot==5&&Hero2.objectHolding==8){
                               map.setTile(1,heroMapCol,heroMapRow,4);
                               Hero2.objectHolding=null
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
+                            if (tileGot==5&&Hero2.objectHolding==10){
+                              map.setTile(1,heroMapCol,heroMapRow,11);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==5&&Hero2.objectHolding==14){
+                              map.setTile(1,heroMapCol,heroMapRow,15);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
                               map.setTile(1,heroMapCol,heroMapRow,3);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==11&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,12);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==12&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,13);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==16&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,17);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==15&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,16);
                               Hero2.objectHolding=null;
                             }
                           }
                           else if (Game.hero2.direction==2){
                             heroMapCol = Math.floor(this.x/ map.tsize) + 1;
                             heroMapRow = Math.floor(this.y/ map.tsize);
-                            if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+                            var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+                            if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
                               map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
                               Hero2.objectHolding = null;
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+                            if (tileGot==5&&Hero2.objectHolding==8){
                               map.setTile(1,heroMapCol,heroMapRow,4);
                               Hero2.objectHolding=null
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
+                            if (tileGot==5&&Hero2.objectHolding==10){
+                              map.setTile(1,heroMapCol,heroMapRow,11);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==5&&Hero2.objectHolding==14){
+                              map.setTile(1,heroMapCol,heroMapRow,15);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
                               map.setTile(1,heroMapCol,heroMapRow,3);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==11&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,12);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==12&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,13);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==16&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,17);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==15&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,16);
                               Hero2.objectHolding=null;
                             }
                           }
                           else if (Game.hero2.direction==1){
                             heroMapCol = Math.floor(this.x/ map.tsize);
                             heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-                            if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+                            var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+                            if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
                               map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
                               Hero2.objectHolding = null;
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+                            if (tileGot==5&&Hero2.objectHolding==8){
                               map.setTile(1,heroMapCol,heroMapRow,4);
                               Hero2.objectHolding=null
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
+                            if (tileGot==5&&Hero2.objectHolding==10){
+                              map.setTile(1,heroMapCol,heroMapRow,11);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==5&&Hero2.objectHolding==14){
+                              map.setTile(1,heroMapCol,heroMapRow,15);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
                               map.setTile(1,heroMapCol,heroMapRow,3);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==11&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,12);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==12&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,13);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==16&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,17);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==15&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,16);
                               Hero2.objectHolding=null;
                             }
                           }
                           else if (Game.hero2.direction==0){
                             heroMapCol = Math.floor(this.x/ map.tsize);
                             heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-                            if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
+                            var tileGot=map.getTile(1,heroMapCol,heroMapRow)
+
+                            if (map.getTile (0, heroMapCol, heroMapRow) == 2 && tileGot==0){
                               map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
                               Hero2.objectHolding = null;
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+                            if (tileGot==5&&Hero2.objectHolding==8){
                               map.setTile(1,heroMapCol,heroMapRow,4);
                               Hero2.objectHolding=null
                             }
-                            if (map.getTile(1,heroMapCol,heroMapRow)==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
+                            if (tileGot==5&&Hero2.objectHolding==10){
+                              map.setTile(1,heroMapCol,heroMapRow,11);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==5&&Hero2.objectHolding==14){
+                              map.setTile(1,heroMapCol,heroMapRow,15);
+                              Hero2.objectHolding=null
+                            }
+                            if (tileGot==4&&(Hero2.objectHolding==6||Hero2.objectHolding==7)){
                               map.setTile(1,heroMapCol,heroMapRow,3);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==11&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,12);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==12&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,13);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==16&&Hero2.objectHolding==6){
+                              map.setTile(1,heroMapCol,heroMapRow,17);
+                              Hero2.objectHolding=null;
+                            }
+                            if (tileGot==15&&Hero2.objectHolding==7){
+                              map.setTile(1,heroMapCol,heroMapRow,16);
                               Hero2.objectHolding=null;
                             }
                           }
@@ -480,7 +695,9 @@ Camera.prototype.update = function () {
                           else if (Game.hero2.direction==3){
                             heroMapCol = Math.floor(this.x/ map.tsize) - 1;
                             heroMapRow = Math.floor(this.y/ map.tsize);
-                            if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+                            var tileGot = map.getTile(1,heroMapCol,heroMapRow);
+
+                            if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
                               map.setTile(0,heroMapCol,heroMapRow,1);
                               this.score+=100;
                               return;
@@ -494,7 +711,7 @@ Camera.prototype.update = function () {
                           else if (Game.hero2.direction==2){
                             heroMapCol = Math.floor(this.x/ map.tsize) + 1;
                             heroMapRow = Math.floor(this.y/ map.tsize);
-                            if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+                            if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
                               map.setTile(0,heroMapCol,heroMapRow,1);
                               this.score+=100;
                               return;
@@ -508,7 +725,7 @@ Camera.prototype.update = function () {
                           else if (Game.hero2.direction==1){
                             heroMapCol = Math.floor(this.x/ map.tsize);
                             heroMapRow = Math.floor(this.y/ map.tsize) - 1;
-                            if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+                            if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
                               map.setTile(0,heroMapCol,heroMapRow,1);
                               this.score+=100;
                               return;
@@ -522,7 +739,7 @@ Camera.prototype.update = function () {
                           else if (Game.hero2.direction==0){
                             heroMapCol = Math.floor(this.x/ map.tsize);
                             heroMapRow = Math.floor(this.y/ map.tsize) + 1;
-                            if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
+                            if (map.getTile(0,heroMapCol, heroMapRow)!=9&&map.getTile(0,heroMapCol, heroMapRow!=1)&&tileGot==0){
                               map.setTile(0,heroMapCol,heroMapRow,1);
                               this.score+=100;
                               return;
