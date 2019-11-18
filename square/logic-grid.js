@@ -226,8 +226,8 @@ Camera.prototype.update = function () {
 
     }
     Hero.prototype.pickUp = function (){
-      if (Hero.objectHolding != null) {return};
-      if (Game.hero.direction==3){
+      if (Hero.objectHolding != null) {return;}
+      else if (Game.hero.direction==3){
         heroMapCol = Math.floor(this.x/ map.tsize) - 1;
         heroMapRow = Math.floor(this.y/ map.tsize);
         if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
@@ -235,9 +235,10 @@ Camera.prototype.update = function () {
           this.score+=100;
           return;
         }
-        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+        else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
           Hero.objectHolding =map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
+          return;
         }
       }
       else if (Game.hero.direction==2){
@@ -248,9 +249,10 @@ Camera.prototype.update = function () {
           this.score+=100;
           return;
         }
-        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+        else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
           Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
+          return;
         }
       }
       else if (Game.hero.direction==1){
@@ -261,9 +263,10 @@ Camera.prototype.update = function () {
           this.score+=100;
           return;
         }
-        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+        else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
           Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
+          return;
         }
       }
       else if (Game.hero.direction==0){
@@ -274,9 +277,10 @@ Camera.prototype.update = function () {
           this.score+=100;
           return;
         }
-        if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+        else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
           Hero.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
           map.setTile (1, heroMapCol, heroMapRow, 0);
+          return;
         }
       }
     }
@@ -364,15 +368,15 @@ Camera.prototype.update = function () {
                           this.hero2.direction=0; }
 
                           if (Keyboard.isDown(Keyboard.SPACE)) {
-                            if(Hero.objectHolding==null){
-                              this.hero.pickUp ();
+                            if (Hero.objectHolding==null){
+                              this.hero.pickUp();
                             }else{
-                              this.hero.drop();
+                              this.hero.drop ();
                             }
                             if(Hero2.objectHolding==null){
-                              this.hero2.pickUp ();
+                              this.hero2.pickUp();
                             }else{
-                              this.hero2.drop();
+                              this.hero2.drop ();
                             }
                             Keyboard._keys[32] = false;
                           }
@@ -380,7 +384,7 @@ Camera.prototype.update = function () {
                           this.hero.move(delta, dirx, diry);
                           this.hero2.move(delta,dirx2,diry2);
                           this.camera.update();
-                        };
+                      };
                         Hero2.SPEED = 256; // pixels per second
 
                         //1 for pot . . . . undecided for rest
@@ -471,9 +475,9 @@ Camera.prototype.update = function () {
 
                         }
                         Hero2.prototype.pickUp = function (){
-                          if (Hero.objectHolding != null) {return};
+                          if (Hero2.objectHolding != null) {return;}
 
-                          if (Game.hero2.direction==3){
+                          else if (Game.hero2.direction==3){
                             heroMapCol = Math.floor(this.x/ map.tsize) - 1;
                             heroMapRow = Math.floor(this.y/ map.tsize);
                             if (map.getTile(0,heroMapCol, heroMapRow!=1)&&map.getTile(1,heroMapCol,heroMapRow)==0){
@@ -481,9 +485,10 @@ Camera.prototype.update = function () {
                               this.score+=100;
                               return;
                             }
-                            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+                            else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
                               Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
                               map.setTile (1, heroMapCol, heroMapRow, 0);
+                              return;
                             }
                           }
                           else if (Game.hero2.direction==2){
@@ -494,9 +499,10 @@ Camera.prototype.update = function () {
                               this.score+=100;
                               return;
                             }
-                            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+                            else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
                               Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
                               map.setTile (1, heroMapCol, heroMapRow, 0);
+                              return;
                             }
                           }
                           else if (Game.hero2.direction==1){
@@ -507,9 +513,10 @@ Camera.prototype.update = function () {
                               this.score+=100;
                               return;
                             }
-                            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+                            else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
                               Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
                               map.setTile (1, heroMapCol, heroMapRow, 0);
+                              return;
                             }
                           }
                           else if (Game.hero2.direction==0){
@@ -520,9 +527,10 @@ Camera.prototype.update = function () {
                               this.score+=100;
                               return;
                             }
-                            if (map.getTile (1, heroMapCol, heroMapRow) !=0){
+                            else if (map.getTile (1, heroMapCol, heroMapRow) !=0){
                               Hero2.objectHolding = map.getTile (1, heroMapCol, heroMapRow);
                               map.setTile (1, heroMapCol, heroMapRow, 0);
+                              return;
                             }
                           }
                         }
