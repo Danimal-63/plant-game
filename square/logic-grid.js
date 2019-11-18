@@ -166,6 +166,10 @@ Hero.prototype.drop = function (){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
     }
+    if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+      map.setTile(1,heroMapCol,heroMapRow,4);
+      Hero.objectHolding=null
+    }
   }
   else if (Game.hero.direction==2){
     heroMapCol = Math.floor(this.x/ map.tsize) + 1;
@@ -173,6 +177,10 @@ Hero.prototype.drop = function (){
     if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
+        }
+        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+          map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero.objectHolding=null
         }
   }
   else if (Game.hero.direction==1){
@@ -182,6 +190,10 @@ Hero.prototype.drop = function (){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
      }
+     if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+       map.setTile(1,heroMapCol,heroMapRow,4);
+       Hero.objectHolding=null
+     }
   }
   else if (Game.hero.direction==0){
     heroMapCol = Math.floor(this.x/ map.tsize);
@@ -189,6 +201,10 @@ Hero.prototype.drop = function (){
     if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
       map.setTile (1, heroMapCol, heroMapRow, Hero.objectHolding);
       Hero.objectHolding = null;
+        }
+        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero.objectHolding==8){
+          map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero.objectHolding=null
         }
   }
 
@@ -379,6 +395,10 @@ Hero.prototype.drop = function (){
           map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
           Hero2.objectHolding = null;
         }
+        if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+          map.setTile(1,heroMapCol,heroMapRow,4);
+          Hero2.objectHolding=null
+        }
         }
         else if (Game.hero2.direction==2){
         heroMapCol = Math.floor(this.x/ map.tsize) + 1;
@@ -386,6 +406,10 @@ Hero.prototype.drop = function (){
         if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
           Hero2.objectHolding = null;
+            }
+            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+              map.setTile(1,heroMapCol,heroMapRow,4);
+              Hero2.objectHolding=null
             }
         }
         else if (Game.hero2.direction==1){
@@ -395,6 +419,10 @@ Hero.prototype.drop = function (){
           map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
           Hero2.objectHolding = null;
          }
+         if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+           map.setTile(1,heroMapCol,heroMapRow,4);
+           Hero2.objectHolding=null
+         }
         }
         else if (Game.hero2.direction==0){
         heroMapCol = Math.floor(this.x/ map.tsize);
@@ -402,6 +430,10 @@ Hero.prototype.drop = function (){
         if (map.getTile (0, heroMapCol, heroMapRow) == 2&& map.getTile(1,heroMapCol,heroMapRow)==0){
           map.setTile (1, heroMapCol, heroMapRow, Hero2.objectHolding);
           Hero2.objectHolding = null;
+            }
+            if (map.getTile(1,heroMapCol,heroMapRow)==5&&Hero2.objectHolding==8){
+              map.setTile(1,heroMapCol,heroMapRow,4);
+              Hero2.objectHolding=null
             }
         }
 
