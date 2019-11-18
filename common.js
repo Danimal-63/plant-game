@@ -39,7 +39,10 @@ Keyboard.RIGHT = 39;
 Keyboard.UP = 38;
 Keyboard.DOWN = 40;
 Keyboard.SPACE = 32;
-
+Keyboard.W=87;
+Keyboard.A=65;
+Keyboard.S=83;
+Keyboard.D=68;
 Keyboard._keys = {};
 
 Keyboard.listenForEvents = function (keys) {
