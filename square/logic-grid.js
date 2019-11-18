@@ -347,18 +347,6 @@ Hero.prototype.drop = function (){
           var maxY = this.map.rows * this.map.tsize;
           this.x = Math.max(0, Math.min(this.x, maxX));
           this.y = Math.max(0, Math.min(this.y, maxY));
-          if (this.x>512-32){
-            this.x=512-32;
-          }
-          if (this.x<0){
-            this.x=0;
-          }
-          if (this.y>512-32){
-            this.y=512-32;
-          }
-          if (this.y<0){
-            this.y=0;
-          }
         };
         Hero2.prototype.drop = function (){
         if (Hero2.objectHolding==null){return;}
@@ -525,8 +513,8 @@ Hero.prototype.drop = function (){
             0,
             64,
             64,
-            this.hero2.x - this.hero2.width / 2,
-            this.hero2.y - this.hero2.height / 2,
+            this.hero2.x+ this.hero.screenX -this.hero.x- this.hero2.width / 2,
+            this.hero2.y+ this.hero.screenY-this.hero.y-this.hero2.height / 2,
           this.hero2.width,this.hero2.height);
 
             // draw map top layer
