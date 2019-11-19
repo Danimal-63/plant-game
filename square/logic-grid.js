@@ -1,3 +1,25 @@
+/**
+*Tile and Object list
+Tiles: cannot be picked up
+1: Stone walkway - can be walked on cannot have objects placed on, cannot be sold
+2: Dirt - can be walked on, can have object placed on, can be sold
+9: Sell Table - cannot be walked on or sold, if a tree in its final stage of growth is placed here, earn a reward
+Objects: Can be picked up,  not walked on
+8: GreenPlantStage0 - Green plant seed, if placed on pot, will grow to stage1
+4: GreenPlantStage1 - bush - If mulch or watering can placed on this, will grow to stage2
+3: GreenPlantStage2: - tree - Final stage of GreenPlant growth, can be sold
+10: RedPlantStage0 - Red plant seed, if placed on pot, will grow to stage1
+11: RedPlantStage1 - stump - if watered, proceed to stage2
+12: RedPlantStage2 - bush - if mulched, proceed to stage3
+13: RedPlantStage3 - tree - Final syahe of RedPlant growth, can be sold
+14: BluePlantStage0 - Blue plant stage - if placed on pot, will grow to stage1
+15: BluePlantStage1 - stump - if mulched, proceed to syage2
+16: BluePlantStage2 - bush - if wayered, proveed to stage3
+17: BluePlantSyahe3 - tree - Final stage of BluePlant growth, can be sold
+5:Pot - can have seeds placed on
+6:Watering Can - boosts certain plant's growth stages
+7:Mulch Bag - boosts certain plant's growth stages
+*/
 var map = {
   cols: 16,
   rows: 16,
@@ -138,7 +160,6 @@ Camera.prototype.update = function () {
 
     Hero.SPEED = 256; // pixels per second
 
-    //1 for pot . . . . undecided for rest
     Hero.objectHolding = null;
 
     Hero.prototype.move = function (delta, dirx, diry) {
@@ -362,7 +383,6 @@ Camera.prototype.update = function () {
         };
         Hero2.SPEED = 256; // pixels per second
 
-        //1 for pot . . . . undecided for rest
         Hero2.objectHolding = null;
 
         Hero2.prototype.move = function (delta, dirx, diry) {
