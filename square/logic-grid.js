@@ -5,6 +5,7 @@ Tiles: cannot be picked up
 2: Dirt - can be walked on, can have object placed on, can be sold
 9: Sell Table - cannot be walked on or sold, if a tree in its final stage of growth is placed here, earn a reward
 18-23: Dispenser for each of the first pickable objects, can be walked on can be sold. dispenses item every 30seconds
+18: pot, 19 wateringcan,20 mulch, 21 GreenPlantStage0, 22 RedPlantStage0, 23  BluePlantStage0
 Objects: Can be picked up,  not walked on
 8: GreenPlantStage0 - Green plant seed, if placed on pot, will grow to stage1
 4: GreenPlantStage1 - bush - If mulch or watering can placed on this, will grow to stage2
@@ -73,10 +74,10 @@ var map = {
     var col = Math.floor(x / this.tsize);
     var row = Math.floor(y / this.tsize);
 
-    // tiles 3 and 5 are solid -- the rest are walkable
     // loop through all layers and return TRUE if any tile is solid
     return this.layers.reduce(function (res, layer, index) {
       var tile = this.getTile(index, col, row);
+      //could it be easier to just check which ones aren't solid?
       var isSolid = tile === 3 || tile === 5||  tile === 4|| tile === 6|| tile === 7|| tile === 8||tile === 9 || tile === 10||  tile === 11|| tile === 12|| tile === 13|| tile === 14||tile === 15 || tile === 16||  tile === 17;
       return res || isSolid;
     }.bind(this), false);
@@ -148,6 +149,7 @@ Camera.prototype.update = function () {
       this.direction=0;//down is 0, up is 1, right is 2, left is 3
       this.image = Loader.getImage('hero');
     }
+
     function Hero2(map, x, y) {
       this.map = map;
       this.x = x;
@@ -170,8 +172,6 @@ Camera.prototype.update = function () {
 
       // check if we walked into a non-walkable tile
       this._collide(dirx, diry);
-
-      //this._pickup(dirx, diry);
 
       // clamp values
       var maxX = this.map.cols * this.map.tsize;
@@ -394,8 +394,6 @@ Camera.prototype.update = function () {
           // check if we walked into a non-walkable tile
           this._collide(dirx, diry);
 
-          //this._pickup(dirx, diry);
-
           // clamp values
           var maxX = this.map.cols * this.map.tsize;
           var maxY = this.map.rows * this.map.tsize;
@@ -419,7 +417,7 @@ Camera.prototype.update = function () {
             heroMapRow = Math.floor(this.y/ map.tsize) + 1;
           }
           var tileGot=map.getTile(1,heroMapCol,heroMapRow)
-          // if hero is at the sell block, it checks what plant it is holding, this value correlates to mult and then pays off
+          // if hero2 is at the sell block, it checks what plant it is holding, this value correlates to mult and then pays off
           if (map.getTile(0,heroMapCol,heroMapRow)==9){
             var mult=1;
             if (this.objectHolding==3){mult=1};
@@ -538,10 +536,6 @@ Camera.prototype.update = function () {
           }
         };
 
-        // function isNextToPot(){
-        //     if ()
-        // }
-
         Game._drawLayer = function (layer) {
           var startCol = Math.floor(this.camera.x / map.tsize);
           var endCol = startCol + (this.camera.width / map.tsize);
@@ -566,6 +560,7 @@ Camera.prototype.update = function () {
                   Math.round(y), // target y
                   map.tsize, // target width
                   map.tsize); // target height
+                  // if at 30 seconds the designated Dispenser will produce its respective object
                   if (Math.round(Game.seconds())%30==0){
                     if (map.getTile(0,c,r)==18){
                       map.setTile(1,c,r,5);
@@ -606,7 +601,7 @@ Camera.prototype.update = function () {
             this.hero.screenX - this.hero.width / 2,
             this.hero.screenY - this.hero.height / 2,
             this.hero.width,this.hero.height);
-
+            //draw second character
             this.ctx.drawImage(
               this.hero2.image,
               (this.hero2.direction)*map.tsize,

@@ -108,6 +108,7 @@ Game.tick = function (elapsed) {
     this.update(delta);
     this.render();
 }.bind(Game);
+//returns approximetly how many seconds the game has been open
 Game.seconds = function (){
   return this._previousElapsed/1000;
 }
