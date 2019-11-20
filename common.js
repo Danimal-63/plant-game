@@ -108,7 +108,9 @@ Game.tick = function (elapsed) {
     this.update(delta);
     this.render();
 }.bind(Game);
-
+Game.seconds = function (){
+  return this._previousElapsed/1000;
+}
 // override these methods to create the demo
 Game.init = function () {};
 Game.update = function (delta) {};
