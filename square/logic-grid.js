@@ -245,11 +245,11 @@ Camera.prototype.update = function () {
         map.setTile(1,heroMapCol,heroMapRow,4);
         this.objectHolding=null
       }
-      if (tileGot==5&&Hero.objectHolding==10){
+      if (tileGot==5&&this.objectHolding==10){
         map.setTile(1,heroMapCol,heroMapRow,11);
         this.objectHolding=null
       }
-      if (tileGot==5&&Hero.objectHolding==14){
+      if (tileGot==5&&this.objectHolding==14){
         map.setTile(1,heroMapCol,heroMapRow,15);
         this.objectHolding=null
       }
@@ -436,11 +436,11 @@ Camera.prototype.update = function () {
             map.setTile(1,heroMapCol,heroMapRow,4);
             this.objectHolding=null
           }
-          if (tileGot==5&&Hero.objectHolding==10){
+          if (tileGot==5&&this.objectHolding==10){
             map.setTile(1,heroMapCol,heroMapRow,11);
             this.objectHolding=null
           }
-          if (tileGot==5&&Hero.objectHolding==14){
+          if (tileGot==5&&this.objectHolding==14){
             map.setTile(1,heroMapCol,heroMapRow,15);
             this.objectHolding=null
           }
